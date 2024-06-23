@@ -64,4 +64,14 @@ contract MyTokenTest is Test {
             revert Test__ZeroAddress();
         }
     }
+
+    function testNameIsCorrect() public view {
+        string memory expectedName = "MyToken";
+        string memory actualName = myToken.name();
+
+        assert(
+            keccak256(abi.encodePacked(expectedName)) ==
+                keccak256(abi.encodePacked(actualName))
+        );
+    }
 }
